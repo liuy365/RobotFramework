@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"> <!-- for HTML5 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+  <title>Login Page</title>
+  <link href="demo.css" media="all" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+    function login(username, password) {
+        if (username == "demo" && password == "mode") {
+            window.location = "welcome.html";
+        } else {
+            window.location = "error.html";
+        }
+    }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <h1>登录</h1>
+      <p>请输入您的用户名和密码点击“登录”按钮登录。</p>
+      <form name="login_form" onsubmit="login(this.username_field.value, this.password_field.value); return false;">
+        <table>
+          <tr>
+            <td><label for="username_field">用户名：</label></td>
+            <td><input id="username_field" size="30" type="text"></td>
+          </tr>
+          <tr>
+            <td><label for="password_field">密码：</label></td>
+            <td><input id="password_field" size="30" type="password"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input id="login_button" type="submit" value="登录"></td>
+          </tr>
+        </table>
+      </form>
+  </div>
+</body>
+</html>

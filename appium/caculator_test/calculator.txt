@@ -1,0 +1,50 @@
+*** Settings ***
+Suite Setup       Open Calc App
+Suite Teardown    Close Application
+Test Setup        Clear Calculator
+Library           AppiumLibrary
+
+*** Variables ***
+${btn_id_plus}    com.miui.calculator:id/btn_plus_s
+${btn_id_result}    com.miui.calculator:id/btn_equal_s
+${btn_id_sub}     com.miui.calculator:id/btn_minus_s
+
+*** Test Cases ***
+Addition_testcase
+    [Documentation]    加法测试，点击任意两个数字验证相加结果
+    [Tags]    android    addition
+    Click Digits And Operator    3    6    ${btn_id_plus}
+    Verify Result    9
+
+Subtraction_testcase
+    [Documentation]    减法测试，点击任意两个数字验证相减结果
+    [Tags]    android    subtraction
+    Click Digits And Operator    6    2    ${btn_id_sub}
+    Get Result
+    Verify Result    4
+
+*** Keywords ***
+Open Calc App
+    [Documentation]    Opens the calculator app with a new appium session.
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=4.4.2    deviceName=127.0.0.1:62001    appPackage=com.miui.calculator    appActivity=.cal.CalculatorActivity
+
+Click Digits And Operator
+    [Arguments]    ${digit1}    ${digit2}    ${operator}
+    [Documentation]    Taks two single digit numbers and the operator as input and presses the correspinding buttons on the calcualtor keypad.
+    Click Element    xpath=//*[contains(@text, '${digit1}')]
+    Click Element    id=${operator}
+    Click Element    xpath=//*[contains(@text, '${digit2}')]
+    Click Element    id=${btn_id_result}
+
+Get Result
+    [Documentation]    Presses the equal to button to view the result of the operation
+    Click Element    id=${btn_id_result}
+
+Verify Result
+    [Arguments]    ${expected_result}
+    [Documentation]    Verifies the result displayed with the expected answer.
+    Page Should Contain Text    =
+    Page Should Contain Text    ${expected_result}
+
+Clear Calculator
+    Click Element    id=com.miui.calculator:id/btn_c_s
