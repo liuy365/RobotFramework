@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20181110 22:26:57.582" generator="Robot 3.0.4 (Python 2.7.15 on win32)">
+<suite source="C:\robot_test_case\robot_demo\3-2-grammer\3-2-1-Variable_TestSuite.tsv" id="s1" name="3-2-1-Variable TestSuite">
+<test id="s1-t1" name="Scalar_TestCase">
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${var1}</arg>
+<arg>Hello</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.622" level="INFO">${var1} = Hello</msg>
+<status status="PASS" endtime="20181110 22:26:57.622" starttime="20181110 22:26:57.622"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${var2}</arg>
+<arg>${var1}, world!</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.622" level="INFO">${var2} = Hello, world!</msg>
+<status status="PASS" endtime="20181110 22:26:57.622" starttime="20181110 22:26:57.622"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${var1}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.622" level="INFO">Hello</msg>
+<status status="PASS" endtime="20181110 22:26:57.622" starttime="20181110 22:26:57.622"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${var2}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.622" level="INFO">Hello, world!</msg>
+<status status="PASS" endtime="20181110 22:26:57.622" starttime="20181110 22:26:57.622"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1</arg>
+<arg>2</arg>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>${var_s}</var>
+<var>@{list}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.622" level="INFO">${var_s} = 1</msg>
+<msg timestamp="20181110 22:26:57.622" level="INFO">@{list} = [ 2 | 3 ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.622" starttime="20181110 22:26:57.622"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<timeout value="20 seconds"></timeout>
+<status status="PASS" endtime="20181110 22:26:57.622" critical="yes" starttime="20181110 22:26:57.612"></status>
+</test>
+<test id="s1-t2" name="Scalar_2nd_TestCase">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>var1=${var1}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.632" level="INFO">var1=Hello</msg>
+<status status="PASS" endtime="20181110 22:26:57.632" starttime="20181110 22:26:57.632"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>var2=${var2}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.632" level="INFO">var2=Hello, world!</msg>
+<status status="PASS" endtime="20181110 22:26:57.632" starttime="20181110 22:26:57.632"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.632" critical="yes" starttime="20181110 22:26:57.632"></status>
+</test>
+<test id="s1-t3" name="List_Suite_TestCase">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>第一个：@{list_suite}[0]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.642" level="INFO">第一个：1</msg>
+<status status="PASS" endtime="20181110 22:26:57.642" starttime="20181110 22:26:57.642"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>第三个：@{list_suite}[2]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.642" level="INFO">第三个：3</msg>
+<status status="PASS" endtime="20181110 22:26:57.642" starttime="20181110 22:26:57.642"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>倒数第一个：@{list_suite}[-1]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.642" level="INFO">倒数第一个：5</msg>
+<status status="PASS" endtime="20181110 22:26:57.642" starttime="20181110 22:26:57.642"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>倒数第三个：@{list_suite}[-3]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.642" level="INFO">倒数第三个：3</msg>
+<status status="PASS" endtime="20181110 22:26:57.642" starttime="20181110 22:26:57.642"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.642" critical="yes" starttime="20181110 22:26:57.632"></status>
+</test>
+<test id="s1-t4" name="List_Case_TestCase">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1</arg>
+<arg>2</arg>
+<arg>3</arg>
+<arg>4</arg>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>@{list_case}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.652" level="INFO">@{list_case} = [ 1 | 2 | 3 | 4 | 5 ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.652" starttime="20181110 22:26:57.652"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{list_case}</arg>
+<arg>6</arg>
+<arg>7</arg>
+</arguments>
+<assign>
+<var>@{list_case2}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.652" level="INFO">@{list_case2} = [ 1 | 2 | 3 | 4 | 5 | 6 | 7 ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.652" starttime="20181110 22:26:57.652"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>list_case第一个值：@{list_case}[0]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.652" level="INFO">list_case第一个值：1</msg>
+<status status="PASS" endtime="20181110 22:26:57.652" starttime="20181110 22:26:57.652"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>list_case2第六个值：@{list_case2}[5]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.652" level="INFO">list_case2第六个值：6</msg>
+<status status="PASS" endtime="20181110 22:26:57.652" starttime="20181110 22:26:57.652"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.652" critical="yes" starttime="20181110 22:26:57.642"></status>
+</test>
+<test id="s1-t5" name="Dict_Suite_TestCase">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>&amp;{dict}[name]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.662" level="INFO">tony</msg>
+<status status="PASS" endtime="20181110 22:26:57.662" starttime="20181110 22:26:57.652"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dict.age}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.662" level="INFO">18</msg>
+<status status="PASS" endtime="20181110 22:26:57.662" starttime="20181110 22:26:57.662"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dict}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.662" level="INFO">{u'name': u'tony', u'age': u'18'}</msg>
+<status status="PASS" endtime="20181110 22:26:57.662" starttime="20181110 22:26:57.662"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.662" critical="yes" starttime="20181110 22:26:57.652"></status>
+</test>
+<test id="s1-t6" name="Dict_Case_TestCase">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>gender=male</arg>
+</arguments>
+<assign>
+<var>&amp;{new_dict}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.672" level="INFO">&amp;{new_dict} = { name=tony | age=18 | gender=male }</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.662"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>&amp;{new_dict}[name]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.672" level="INFO">tony</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.672"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>&amp;{new_dict}[gender]</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.672" level="INFO">male</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.672"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${new_dict}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.672" level="INFO">{u'name': u'tony', u'age': u'18', u'gender': u'male'}</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.672"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>&amp;{new_dict}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.672" level="INFO">name=tony</msg>
+<msg timestamp="20181110 22:26:57.672" level="INFO">age=18</msg>
+<msg timestamp="20181110 22:26:57.672" level="INFO">gender=male</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.672"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${list_suite}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.672" level="INFO">[u'1', u'2', u'3', u'4', u'5']</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.672"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>@{list_suite}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.672" level="INFO">1</msg>
+<msg timestamp="20181110 22:26:57.672" level="INFO">2</msg>
+<msg timestamp="20181110 22:26:57.672" level="INFO">3</msg>
+<msg timestamp="20181110 22:26:57.672" level="INFO">4</msg>
+<msg timestamp="20181110 22:26:57.672" level="INFO">5</msg>
+<status status="PASS" endtime="20181110 22:26:57.672" starttime="20181110 22:26:57.672"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.672" critical="yes" starttime="20181110 22:26:57.662"></status>
+</test>
+<test id="s1-t7" name="Transfer_TestCase">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>1</arg>
+<arg>2</arg>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>@{var}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.682" level="INFO">@{var} = [ 1 | 2 | 3 ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.682" starttime="20181110 22:26:57.682"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${var}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.682" level="INFO">[u'1', u'2', u'3']</msg>
+<status status="PASS" endtime="20181110 22:26:57.682" starttime="20181110 22:26:57.682"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>name=tony</arg>
+<arg>age=18</arg>
+</arguments>
+<assign>
+<var>&amp;{dic}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.682" level="INFO">&amp;{dic} = { name=tony | age=18 }</msg>
+<status status="PASS" endtime="20181110 22:26:57.682" starttime="20181110 22:26:57.682"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dic}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.682" level="INFO">{u'name': u'tony', u'age': u'18'}</msg>
+<status status="PASS" endtime="20181110 22:26:57.682" starttime="20181110 22:26:57.682"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>4</arg>
+<arg>5</arg>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${var2}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.682" level="INFO">${var2} = [u'4', u'5', u'6']</msg>
+<status status="PASS" endtime="20181110 22:26:57.682" starttime="20181110 22:26:57.682"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.682" critical="yes" starttime="20181110 22:26:57.672"></status>
+</test>
+<test id="s1-t8" name="Multiple_Variable_TestCase">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>aa</arg>
+<arg>bb</arg>
+<arg>cc</arg>
+</arguments>
+<assign>
+<var>${v1}</var>
+<var>${v2}</var>
+<var>${v3}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${v1} = aa</msg>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${v2} = bb</msg>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${v3} = cc</msg>
+<status status="PASS" endtime="20181110 22:26:57.692" starttime="20181110 22:26:57.692"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>aa</arg>
+<arg>bb</arg>
+<arg>cc</arg>
+</arguments>
+<assign>
+<var>${first}</var>
+<var>@{rest}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${first} = aa</msg>
+<msg timestamp="20181110 22:26:57.692" level="INFO">@{rest} = [ bb | cc ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.692" starttime="20181110 22:26:57.692"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>aa</arg>
+<arg>bb</arg>
+<arg>cc</arg>
+</arguments>
+<assign>
+<var>@{before}</var>
+<var>${last}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.692" level="INFO">@{before} = [ aa | bb ]</msg>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${last} = cc</msg>
+<status status="PASS" endtime="20181110 22:26:57.692" starttime="20181110 22:26:57.692"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>aa</arg>
+<arg>bb</arg>
+<arg>cc</arg>
+</arguments>
+<assign>
+<var>${begin}</var>
+<var>@{middle}</var>
+<var>${end}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${begin} = aa</msg>
+<msg timestamp="20181110 22:26:57.692" level="INFO">@{middle} = [ bb ]</msg>
+<msg timestamp="20181110 22:26:57.692" level="INFO">${end} = cc</msg>
+<status status="PASS" endtime="20181110 22:26:57.692" starttime="20181110 22:26:57.692"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.692" critical="yes" starttime="20181110 22:26:57.682"></status>
+</test>
+<test id="s1-t9" name="Extend_Scope_First_TestCase">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>Hello,world!</arg>
+</arguments>
+<assign>
+<var>${var}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.702" level="INFO">${var} = Hello,world!</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.692"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1</arg>
+<arg>2</arg>
+<arg>3</arg>
+<arg>4</arg>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>@{list}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.702" level="INFO">@{list} = [ 1 | 2 | 3 | 4 | 5 ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>name=tony</arg>
+<arg>age=18</arg>
+<arg>gender=male</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.702" level="INFO">&amp;{dict} = { name=tony | age=18 | gender=male }</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${var_new}</arg>
+<arg>a new scalar created in case 1</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.702" level="INFO">${var_new} = a new scalar created in case 1</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>&amp;{dict_new}</arg>
+<arg>a=1</arg>
+<arg>b=2</arg>
+<arg>c=3</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.702" level="INFO">&amp;{dict_new} = { a=1 | b=2 | c=3 }</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${var}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.702" level="INFO">${var} = Hello,world!</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{list}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.702" level="INFO">@{list} = [ 1 | 2 | 3 | 4 | 5 ]</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.702" level="INFO">&amp;{dict} = { name=tony | age=18 | gender=male }</msg>
+<status status="PASS" endtime="20181110 22:26:57.702" starttime="20181110 22:26:57.702"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.702" critical="yes" starttime="20181110 22:26:57.692"></status>
+</test>
+<test id="s1-t10" name="Extend_Scope_Second_TestCase">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${var}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.712" level="INFO">Hello,world!</msg>
+<status status="PASS" endtime="20181110 22:26:57.712" starttime="20181110 22:26:57.712"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${list}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.712" level="INFO">[u'1', u'2', u'3', u'4', u'5']</msg>
+<status status="PASS" endtime="20181110 22:26:57.712" starttime="20181110 22:26:57.712"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dict}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.712" level="INFO">{u'name': u'tony', u'age': u'18', u'gender': u'male'}</msg>
+<status status="PASS" endtime="20181110 22:26:57.712" starttime="20181110 22:26:57.712"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${var_new}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.712" level="INFO">a new scalar created in case 1</msg>
+<status status="PASS" endtime="20181110 22:26:57.712" starttime="20181110 22:26:57.712"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dict_new}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.712" level="INFO">{u'a': u'1', u'b': u'2', u'c': u'3'}</msg>
+<status status="PASS" endtime="20181110 22:26:57.712" starttime="20181110 22:26:57.712"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.712" critical="yes" starttime="20181110 22:26:57.702"></status>
+</test>
+<test id="s1-t11" name="Test_empty_TestCase">
+<kw name="myKeyword">
+<arguments>
+<arg>a</arg>
+<arg>${EMPTY}</arg>
+<arg>c</arg>
+</arguments>
+<assign>
+<var>${ret}</var>
+</assign>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${arg1} | ${arg2} | ${arg3}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.722" level="INFO">a |  | c</msg>
+<status status="PASS" endtime="20181110 22:26:57.722" starttime="20181110 22:26:57.722"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${arg1}</arg>
+</arguments>
+<assign>
+<var>${ret}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.722" level="INFO">${ret} = a</msg>
+<status status="PASS" endtime="20181110 22:26:57.722" starttime="20181110 22:26:57.722"></status>
+</kw>
+<msg timestamp="20181110 22:26:57.722" level="INFO">${ret} = a</msg>
+<status status="PASS" endtime="20181110 22:26:57.722" starttime="20181110 22:26:57.722"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>ret=${ret}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.722" level="INFO">ret=a</msg>
+<status status="PASS" endtime="20181110 22:26:57.722" starttime="20181110 22:26:57.722"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${EMPTY}</arg>
+</arguments>
+<assign>
+<var>${ret}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.722" level="INFO">${ret} = </msg>
+<status status="PASS" endtime="20181110 22:26:57.722" starttime="20181110 22:26:57.722"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>ret=${ret}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.722" level="INFO">ret=</msg>
+<status status="PASS" endtime="20181110 22:26:57.722" starttime="20181110 22:26:57.722"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.722" critical="yes" starttime="20181110 22:26:57.712"></status>
+</test>
+<test id="s1-t12" name="Variable_in_Variable_TestCase">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>/home/john</arg>
+</arguments>
+<assign>
+<var>${John Home }</var>
+</assign>
+<msg timestamp="20181110 22:26:57.732" level="INFO">${John Home } = /home/john</msg>
+<status status="PASS" endtime="20181110 22:26:57.732" starttime="20181110 22:26:57.732"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>/home/alice</arg>
+</arguments>
+<assign>
+<var>${Alice Home }</var>
+</assign>
+<msg timestamp="20181110 22:26:57.732" level="INFO">${Alice Home } = /home/alice</msg>
+<status status="PASS" endtime="20181110 22:26:57.732" starttime="20181110 22:26:57.732"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>John</arg>
+</arguments>
+<assign>
+<var>${name}</var>
+</assign>
+<msg timestamp="20181110 22:26:57.732" level="INFO">${name} = John</msg>
+<status status="PASS" endtime="20181110 22:26:57.732" starttime="20181110 22:26:57.732"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${${name} Home}</arg>
+</arguments>
+<msg timestamp="20181110 22:26:57.732" level="INFO">/home/john</msg>
+<status status="PASS" endtime="20181110 22:26:57.732" starttime="20181110 22:26:57.732"></status>
+</kw>
+<tags>
+<tag>regression</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20181110 22:26:57.732" critical="yes" starttime="20181110 22:26:57.722"></status>
+</test>
+<status status="PASS" endtime="20181110 22:26:57.732" starttime="20181110 22:26:57.582"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="12">Critical Tests</stat>
+<stat fail="0" pass="12">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="12">regression</stat>
+<stat fail="0" pass="12">smoke</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="3-2-1-Variable TestSuite" pass="12">3-2-1-Variable TestSuite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
