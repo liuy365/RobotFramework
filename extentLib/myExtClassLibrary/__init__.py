@@ -1,0 +1,1 @@
+from myHello2 import myExtClassLibrary
