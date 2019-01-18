@@ -3,7 +3,8 @@ Documentation     Tests the AutoItLibrary by using various AutoIt keywords on th
 Suite Setup       Start Calculator
 Suite Teardown    Stop Calculator
 Test Setup        Clear Calculator
-Force Tags        smoke
+Force Tags
+Default Tags      smoke
 Library           AutoItLibrary    ${OUTPUT DIR}    10    ${True}
 Library           Collections
 Library           String
