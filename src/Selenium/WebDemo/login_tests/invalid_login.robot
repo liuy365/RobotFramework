@@ -1,14 +1,11 @@
 *** Settings ***
-Documentation     A test suite containing tests related to invalid login.
+Documentation     存放异常case的test suite
 ...
-...               These tests are data-driven by their nature. They use a single
-...               keyword, specified with Test Template setting, that is called
-...               with different arguments to cover different scenarios.
-...
-...               This suite also demonstrates using setups and teardowns in
-...               different levels.
+...               这里面的case逻辑都是一样的，只是输入的数据不一样。
+...               我们用数据驱动的风格来设计测试用例
+...               \ \ \ \ \ \ \ \ \ \
 Test Setup        Go To Login Page
-Test Template     Login With Invalid Credentials Should Fail
+Test Template     Login With Invalid Credentials Should Fail    #测试模版关键字，数据驱动风格特有的定义方式。这个suite里的每一个case都按这个模版定义的步骤执行。
 Resource          resource.robot
 
 *** Test Cases ***    USER NAME        PASSWORD

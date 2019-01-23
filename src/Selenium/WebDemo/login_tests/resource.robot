@@ -1,14 +1,10 @@
 *** Settings ***
-Documentation     A resource file with reusable keywords and variables.
-...
-...               The system specific keywords created here form our own
-...               domain specific language. They utilize keywords provided
-...               by the imported Selenium2Library.
-Library           SeleniumLibrary
+Documentation     公共的关键字和变量定义的resource文件
+Library           SeleniumLibrary    #导入SeleniumLibrary，所有参数用默认值。
 
 *** Variables ***
 ${SERVER}         localhost:7272
-${BROWSER}        ie
+${BROWSER}        chrome
 ${DELAY}          0
 ${VALID USER}     demo
 ${VALID PASSWORD}    mode
@@ -32,14 +28,14 @@ Go To Login Page
 
 Input Username
     [Arguments]    ${username}
-    Input Text    username_field    ${username}
+    Input Text    username_field    ${username}     #用id:username_field定位
 
 Input Password
     [Arguments]    ${password}
-    Input Text    password_field    ${password}
+    Input Text    password_field    ${password}    #用id:password_field定位
 
 Submit Credentials
-    Click Button    login_button
+    Click Button    login_button    #用id:login_button定位
 
 Welcome Page Should Be Open
     Location Should Be    ${WELCOME URL}
