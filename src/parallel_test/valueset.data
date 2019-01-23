@@ -1,4 +1,4 @@
 [Server 1]
-HOST=test4_host
-USERNAME=test4
-PASSWORD=test4_passwd
+HOST=test1_host
+USERNAME=test1
+PASSWORD=test1_passwd
