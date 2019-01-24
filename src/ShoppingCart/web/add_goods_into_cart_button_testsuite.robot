@@ -14,4 +14,4 @@ Add_chart Button Show On Goods Page
 
 *** Keywords ***
 Open Goods Page
-    Open Page    https://detail.tmall.com/item.htm?id=576559843732&ali_refid=a3_430583_1006:1106510893:N:%B3%E4%B5%E7%B1%A680000%BA%C1%B0%B2:7180337833ef410e881598f09bc49a2c&ali_trackid=1_7180337833ef410e881598f09bc49a2c&spm=a230r.1.14.1
+    Open Page    https://detail.tmall.com/item.htm?spm=a230r.1.14.20.312b67f8ccrGSk&id=579497336835&ns=1&abbucket=18&sku_properties=5919063:6536025;122216431:27772
