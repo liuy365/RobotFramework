@@ -29,7 +29,7 @@ Go To Cart Page On Line
     Go To    ${Home_Page}
     Wait Until Page Contains Element    //*[@id="mc-menu-hd"]    30
     Click Element    //*[@id="mc-menu-hd"]
-    Wait Until Keyword Succeeds    60    5    My Cart Page Opened
+    Wait Until Keyword Succeeds    60    10    My Cart Page Opened
 
 My Cart Page Opened
     ${title}    Get Title

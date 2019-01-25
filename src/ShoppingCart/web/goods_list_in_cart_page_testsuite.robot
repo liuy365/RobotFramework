@@ -2,7 +2,7 @@
 Documentation     使用场景2：进入购物车主页，能看见所有挑选的商品列表。
 Suite Setup       Open Cart Page
 Resource          web_resource.robot
-Library           XML
+Library           ${CURDIR}/lib/GetGoodsItemsLib
 
 *** Test Cases ***
 Check Goods Items Showed On Page
@@ -32,12 +32,20 @@ Check Goods Numbers Showed On Page
 *** Keywords ***
 Check Each Item In Goods
     [Arguments]    ${element_src}
-    Log    ${element_src}
-    ${root}    Parse XML    ${element_src}
+    &{items}    Get Goods Items    ${element_src}
+    Log Many    &{items}
+    Should Be True    &{items}[chk]
+    Should Be True    &{items}[img]
+    Should Not Be Empty    &{items}[title]
+    Should Match Regexp    &{items}[price]    [0-9]+\\.[0-9]+
+    Should Match Regexp    &{items}[amount]    [0-9]+
+    Should Match Regexp    &{items}[sum]    [0-9]+\\.[0-9]+
+    Should Not Be Empty    &{items}[fav]
+    Should Not Be Empty    &{items}[del]
 
 Get Goods Number From DB
     [Documentation]    从其它接口取得购物车中的物品数量， 比如数据库。
-    ${ret}    Set Variable    17
+    ${ret}    Set Variable    13
     [Return]    ${ret}
 
 Get Goods Number From Page
