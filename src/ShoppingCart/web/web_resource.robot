@@ -36,6 +36,9 @@ My Cart Page Opened
     Should Contain    ${title}    我的购物车
 
 Open Cart Page
+    ${title}    Get Title
+    ${status}     ${value} =     Run Keyword And Ignore Error    Should Contain    ${title}    我的购物车
+    Return From Keyword If    '${status}' == 'PASS'
     ${status}    ${value} =    Run Keyword And Ignore Error    File Should Exist    ${Cart_Page_file}
     Run Keyword If    '${status}'=='PASS'    Go To    file://${Cart_Page_File}
     Run Keyword Unless    '${status}'=='PASS'    Go To Cart Page On Line
