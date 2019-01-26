@@ -13,7 +13,7 @@ Check Goods Items Showed On Page
     ...    3.如果商品有特殊服务，比如支持信用卡、7天无理由退换等， 显示在商品旁；
     ...    4.商品按店铺分割，同一店铺的商品放在一起；
     ...    5.有店铺的旺旺快捷入口；
-    @{elements}    Get WebElements    //div[@class="item-holder"]
+    @{elements}    Get WebElements    ${goods_list_xpath}
     : FOR    ${element}    IN    @{elements}
     \    ${content}    get_element_source    ${element}
     \    Check Each Item In Goods    ${content}
@@ -49,6 +49,6 @@ Get Goods Number From DB
 
 Get Goods Number From Page
     [Documentation]    取得购物车网页上的商品数量。
-    @{elements}    Get WebElements    //div[@class="item-holder"]
+    @{elements}    Get WebElements    ${goods_list_xpath}
     ${len}    Get Length    ${elements}
     [Return]    ${len}

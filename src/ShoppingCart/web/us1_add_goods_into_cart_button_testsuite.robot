@@ -9,9 +9,7 @@ Add_chart Button Show On Goods Page
     ...
     ...    期望结果:
     ...    页面上有“加入购物车”按钮。
-    Open Goods Page
-    Page Should Caintains Elements    //*[@id="J_LinkBasket"]
+    Open Page    ${a_goods_url}
+    Page Should Caintains Elements    ${add_in_chart_btn_xpath}
 
 *** Keywords ***
-Open Goods Page
-    Open Page    https://detail.tmall.com/item.htm?spm=a230r.1.14.20.312b67f8ccrGSk&id=579497336835&ns=1&abbucket=18&sku_properties=5919063:6536025;122216431:27772

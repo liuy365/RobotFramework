@@ -9,7 +9,7 @@ Library           String
 All Goods Are Not Checked
     [Documentation]    动作 | \ \ \ 期望结果
     ...    打开购物车页面 | \ \ \ 在每个商品旁有个复选框，默认全不选中。
-    @{elements}    Get WebElements    //div[@class="item-holder"]
+    @{elements}    Get WebElements    ${goods_list_xpath}
     : FOR    ${element}    IN    @{elements}
     \    ${content}    get_element_source    ${element}
     \    Goods Should Not Be Checked    ${content}
@@ -22,7 +22,8 @@ Check Sum For All Checked Goods
     ...    1. 能显示所有已选商品的总价。金额要正确。
     ...    2. 在金额旁点击“结算” 按钮能进入收银台页面。
     : FOR    ${i}    IN RANGE    1    4
-    \    Click Element    //div[starts-with(@id,"J_OrderHolder_s")][${i}]//div[contains(@class, "cart-checkbox")]
+    \    ${element_id}    Replace String    ${first_order_checkbox_xpath}    [1]    [${i}]
+    \    Click Element    ${element_id}
     \    Sleep    1
     ${sum_calculate}    Get Sum For Goods
     ${sum_on_page}    Get Sum On Page
@@ -36,7 +37,7 @@ Goods Should Not Be Checked
     Should Be Equal As Strings    &{items}[chk]    not_checked
 
 Get Sum For Goods
-    @{elements}    Get WebElements    //div[@class="item-holder"]
+    @{elements}    Get WebElements    ${goods_list_xpath}
     ${sum_all}    Set Variable    ${0}
     : FOR    ${element}    IN    @{elements}
     \    ${content}    get_element_source    ${element}
@@ -54,11 +55,10 @@ Get Sum On Page
     [Return]    ${sum_on_page}
 
 Clear All Checkbox
-    ${chk_all_id}    Set Variable    //div[@class="cart-table-th"]//div[contains(@class, "cart-checkbox")]
-    ${chk_class}    Get Element Attribute    ${chk_all_id}    class
+    ${chk_class}    Get Element Attribute    ${checkbox_total_xpath}    class
     ${status}     ${value} =     Run Keyword And Ignore Error    Should Contain    ${chk_class}    cart-checkbox-checked
-    Run Keyword If     '${status}' == 'PASS'     Click Element    ${chk_all_id}
-    Run Keyword Unless     '${status}' == 'PASS'     Click Element    ${chk_all_id}
+    Run Keyword If     '${status}' == 'PASS'     Click Element    ${checkbox_total_xpath}
+    Run Keyword Unless     '${status}' == 'PASS'     Click Element    ${checkbox_total_xpath}
     sleep    1
-    Run Keyword Unless     '${status}' == 'PASS'     Click Element    ${chk_all_id}
+    Run Keyword Unless     '${status}' == 'PASS'     Click Element    ${checkbox_total_xpath}
     sleep    1

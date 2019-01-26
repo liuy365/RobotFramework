@@ -11,11 +11,11 @@ Click Plus Button
     ...
     ...    期望结果：
     ...    商品数量每点一次加一个，金额相应增加。
-    ${element}    Get WebElement    //div[starts-with(@id,"J_OrderHolder_s")][1]    #我们用xpath定位到第一个商品
+    ${element}    Get WebElement    ${first_order_xpath}    #我们用xpath定位到第一个商品
     ${amount1}    Check Amount and Sum    ${element}    #检查并计算商品金额=单价*数量
-    Click Element    //div[starts-with(@id,"J_OrderHolder_s")][1]//a[contains(@class, "J_Plus")]    #我们用xpath定位到第一个商品里的“+”号
+    Click Element    ${first_order_plus_xpath}    #我们用xpath定位到第一个商品里的“+”号
     Sleep    5    #页面重新计算金额有点延迟
-    ${element}    Get WebElement    //div[starts-with(@id,"J_OrderHolder_s")][1]    #重新取得这个商品的信息
+    ${element}    Get WebElement    ${first_order_xpath}    #重新取得这个商品的信息
     ${amount2}    Check Amount and Sum    ${element}    #根据新的数量重新计算和检查商品金额
     ${value}    Evaluate    ${amount2}-${amount1}    #取得每点一次加后数量增加个数
     Should Be Equal As Integers    ${value}    1    #验证个数正确
@@ -26,11 +26,11 @@ Click Minus Botton
     ...
     ...    期望结果：
     ...    商品数量每点一次减一个，金额相应减少。
-    ${element}    Get WebElement    //div[contains(@id,"J_OrderHolder_s")][1]
+    ${element}    Get WebElement    ${first_order_xpath}
     ${amount1}    Check Amount and Sum    ${element}
-    Click Element    //div[contains(@id,"J_OrderHolder_s")][1]//a[contains(@class, "J_Minus")]
+    Click Element    ${first_order_minus_xpath}
     Sleep    5
-    ${element}    Get WebElement    //div[contains(@id,"J_OrderHolder_s")][1]
+    ${element}    Get WebElement    ${first_order_xpath}
     ${amount2}    Check Amount and Sum    ${element}
     ${value}    Evaluate    ${amount1}-${amount2}
     Should Be Equal As Integers    ${value}    1
@@ -62,7 +62,7 @@ Check Amount and Sum
 
 Check Invalid Amount Input
     [Arguments]    ${input_value}    ${expected_value}
-    ${input_box}    Set Variable    //div[starts-with(@id,"J_OrderHolder_s")][1]//input[contains(@class, "J_ItemAmount")]
+    ${input_box}    Set Variable    ${first_order_amount_input_xpath}
     ${old_value}    Get Value    ${input_box}
     ${max}    Get Element Attribute    ${input_box}    data-max
     Run Keyword If    '${input_value}' == '2147483648'    Set Suite Variable    ${expected_value}    ${max}
