@@ -44,7 +44,7 @@ Check Each Item In Goods
 
 Get Goods Number From DB
     [Documentation]    从其它接口取得购物车中的物品数量， 比如数据库。
-    ${ret}    Set Variable    13
+    ${ret}    Set Variable    6
     [Return]    ${ret}
 
 Get Goods Number From Page
