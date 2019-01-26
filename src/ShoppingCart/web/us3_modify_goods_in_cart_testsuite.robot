@@ -46,8 +46,8 @@ Invalid Amount Input
     0    1
     -1    1
     2.5    2
-    a    1
     2147483648    12345
+    a    1
 
 *** Keywords ***
 Check Amount and Sum
