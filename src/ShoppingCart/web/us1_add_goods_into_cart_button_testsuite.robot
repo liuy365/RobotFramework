@@ -3,7 +3,7 @@ Documentation     使用场景1：“加入购物车”按钮能出现在所有�
 Resource          web_resource.robot
 
 *** Test Cases ***
-Add_chart Button Show On Goods Page
+Add_cart Button Show On Goods Page
     [Documentation]    动作:
     ...    打开某个商品详情页
     ...

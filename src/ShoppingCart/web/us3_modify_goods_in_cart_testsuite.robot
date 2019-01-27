@@ -52,7 +52,7 @@ Invalid Amount Input
 *** Keywords ***
 Check Amount and Sum
     [Arguments]    ${element}
-    ${content}    get_element_source    ${element}
+    ${content}    Get Element Attribute    ${element}    innerHTML
     &{items}    Get Goods Items    ${content}
     ${expected_sum}    evaluate    &{items}[price] * &{items}[amount]
     ${sum}    Set Variable    &{items}[sum]

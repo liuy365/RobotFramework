@@ -15,7 +15,7 @@ Check Goods Items Showed On Page
     ...    5.有店铺的旺旺快捷入口；
     @{elements}    Get WebElements    ${goods_list_xpath}
     : FOR    ${element}    IN    @{elements}
-    \    ${content}    get_element_source    ${element}
+    \    ${content}    Get Element Attribute    ${element}    innerHTML
     \    Check Each Item In Goods    ${content}
 
 Check Goods Numbers Showed On Page

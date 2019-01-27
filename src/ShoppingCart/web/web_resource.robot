@@ -17,6 +17,7 @@ ${first_order_minus_xpath}    //div[contains(@id,"J_OrderHolder_s")][1]//a[conta
 ${first_order_amount_input_xpath}    //div[starts-with(@id,"J_OrderHolder_s")][1]//input[contains(@class, "J_ItemAmount")]    # 第一个商品里“数量”的xpath定位器
 ${first_order_checkbox_xpath}    //div[starts-with(@id,"J_OrderHolder_s")][1]//div[contains(@class, "cart-checkbox")]    # 第一个商品里“复选框”的xpath定位器
 ${checkbox_total_xpath}    //div[@class="cart-table-th"]//div[contains(@class, "cart-checkbox")]    # 购物车页面“全选”框的xpath定位器
+${total_pay}      //em[@id="J_Total"]
 
 *** Keywords ***
 Open Page
