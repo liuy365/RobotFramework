@@ -42,6 +42,10 @@ Dict_Suite_TestCase
     Log    &{dict}[name]
     Log    ${dict.age}
     Log    ${dict}
+    Set To Dictionary    ${dict}    chk    false
+    Log Many    ${dict}
+    Keep In Dictionary    ${dict}    no_exist
+    Log Many    ${dict}
 
 Dict_Case_TestCase
     &{new_dict}    Create Dictionary    &{dict}    gender=male
@@ -49,8 +53,6 @@ Dict_Case_TestCase
     Log    &{new_dict}[gender]
     Log    ${new_dict}
     Log Many    &{new_dict}
-    Log    ${list_suite}
-    Log Many    @{list_suite}
 
 Transfer_TestCase
     @{var}    Create List    1    2    3
