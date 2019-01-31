@@ -9,7 +9,9 @@ Add_cart Button Show On Goods Page
     ...
     ...    期望结果:
     ...    页面上有“加入购物车”按钮。
-    Open Page    ${a_goods_url}
-    Page Should Caintains Elements    ${add_in_chart_btn_xpath}
+    Open Goods Page
+    Wait Until Page Contains Element    ${add_in_cart_btn_xpath}    ${time_out}    找不到"加入购物车"按钮
 
 *** Keywords ***
+Open Goods Page
+    Open Page    ${a_goods_url}
