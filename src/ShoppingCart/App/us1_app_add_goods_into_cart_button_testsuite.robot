@@ -2,10 +2,13 @@
 Documentation     使用场景1：“加入购物车”按钮能出现在所有商品的页面上。
 Resource          app_resource.robot
 
+*** Variables ***
+${add_in_cart_btn_xpath}    //android.widget.TextView[@text="加入购物车"]
+
 *** Test Cases ***
 Add_cart Button Show On Goods Page
     Open Goods Page
-    Wait Until Page Contains Element    ${add_in_cart_btn_xpath}    ${time_out}    找不到"加入购物车"按钮
+    Wait Until Page Contains Element    ${add_in_cart_btn_xpath}    找不到"加入购物车"按钮
 
 *** Keywords ***
 Open Goods Page
