@@ -24,10 +24,12 @@ BOTTOM_OF_CART_XPATH = "//android.widget.ImageView[@source-id='com.taobao.taobao
 
 #购物车商品编辑页面
 CHECKBOX_ID = "id=com.taobao.taobao:id/checkbox_goods"  #复选框
-EDIT_BTN_ID = "id=com.taobao.taobao:id/textview_edit"   #编辑按钮
-FINISH_BTN_XPATH = "xpath=//android.widget.TextView[@text='完成']"    #完成按钮
+EDIT_BTN_ID = "id=com.taobao.taobao:id/textview_edit"   #"编辑"按钮
+FINISH_BTN_XPATH = "xpath=//android.widget.TextView[@text='完成']"    #"完成"按钮
 ADD_BTN_ID = "id=com.taobao.taobao:id/imagebutton_num_increase"     #“+”号
 MINUS_BTN_ID = "id=com.taobao.taobao:id/imagebutton_num_decrease"   #“-”号
-AMOUNT_TEXT_ID = "id=com.taobao.taobao:id/button_edit_num"  #数量
+AMOUNT_TEXT_ID = "id=com.taobao.taobao:id/button_edit_num"  #商品数量
 PRICE_TEXT_ID = "id=com.taobao.taobao:id/textview_real_price"   #价格
 TOTAL_COST_ID = "id=com.taobao.taobao:id/textview_closingcost_price"    #总金额
+POPUP_AMOUNT_TEXT_ID = "id=com.taobao.taobao:id/edittext_edit_num"    #在弹出窗口里的商品数量显示框
+POPUP_OK_ID = "id=com.taobao.taobao:id/TBDialog_buttons_OK"    #在弹出窗口里的“确认”按钮

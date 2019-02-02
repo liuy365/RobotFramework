@@ -38,7 +38,7 @@ Get Goods Number From Page
     \    Append To List    ${list_all_titles}    @{list_t}
     \    ${count}    Get Matching Xpath Count    ${BOTTOM_OF_CART_ID}    #向下滑动到购物车列表的底部：“你可能还喜欢”图片出现
     \    Exit For Loop If    ${count}>0
-    \    Swipe    400    1000    400    700    500
+    \    Swipe Up One Page
     @{list_all_titles}    Remove Duplicates    ${list_all_titles}
     ${number}    Get Length    ${list_all_titles}
     Log Many    @{list_all_titles}
