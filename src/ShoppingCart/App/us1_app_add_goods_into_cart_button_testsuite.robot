@@ -4,6 +4,11 @@ Resource          app_resource.robot
 
 *** Test Cases ***
 Add_cart Button Show On Goods Page
+    [Documentation]    动作:
+    ...    打开某个商品详情页
+    ...
+    ...    期望结果:
+    ...    页面上有“加入购物车”按钮。
     Open Goods Page
     Wait Until Page Contains Element    ${ADD_IN_CART_BTN_XPATH}    error=找不到"加入购物车"按钮
 

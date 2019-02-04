@@ -1,5 +1,8 @@
 *** Settings ***
+Documentation     使用场景3：能修改购物车里已选商品。
 Suite Setup       Open Cart Page
+Test Setup        Edit Number Setup
+Test Teardown     Edit Number Teardown
 Resource          app_resource.robot
 Library           String
 
@@ -7,7 +10,11 @@ Library           String
 
 *** Test Cases ***
 Edit Goods Amount And Check Total Cost
-    [Setup]    Edit Number Setup
+    [Documentation]    动作:
+    ...    点击商品数量旁的“+”，“-”或直接修改数量；
+    ...
+    ...    期望结果：
+    ...    购物车的总价将作相应的调整。
     Wait And Click Element    ${ADD_BTN_ID}
     Check Goods Sum Is Correct Or Not
     Wait And Click Element    ${MINUS_BTN_ID}
@@ -16,7 +23,16 @@ Edit Goods Amount And Check Total Cost
     Check Goods Sum Is Correct Or Not
     Change Goods Number To    1
     Check Goods Sum Is Correct Or Not
-    [Teardown]    Edit Number Teardown
+
+Invalid Amount Input
+    [Template]    Check Invalid Amount Input
+    -2    2
+    -1    1
+    0    1
+    2.5    25
+    2147483648    25
+    a    25
+    1    1
 
 *** Keywords ***
 Edit Number Setup
@@ -38,12 +54,6 @@ Check Goods Sum Is Correct Or Not
     ${expect_total_sum}    Evaluate    ${amount} * ${price}
     Should Be Equal As Numbers    ${total_sum}    ${expect_total_sum}    precision=2
 
-Get Price
-    [Arguments]    ${textview_id}
-    ${price}    Get Element Attribute    ${textview_id}    text
-    ${price}    Remove String    ${price}    ￥
-    [Return]    ${price}
-
 Change Goods Number To
     [Arguments]    ${number}
     Wait And Click Element    ${AMOUNT_TEXT_ID }
@@ -52,3 +62,9 @@ Change Goods Number To
     Input Text    ${POPUP_AMOUNT_TEXT_ID}    ${number}
     Click Element    ${POPUP_OK_ID}
     sleep    1
+
+Check Invalid Amount Input
+    [Arguments]    ${input_value}    ${expected_value}
+    Change Goods Number To    ${input_value}
+    ${amount}    Get Element Attribute    ${AMOUNT_TEXT_ID}    text
+    Should Be Equal As Integers    ${amount}    ${expected_value}

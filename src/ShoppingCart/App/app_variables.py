@@ -13,14 +13,14 @@ SEARCH_RESULT_FIRST = "id=com.taobao.taobao:id/rfq_quote_array_item_img"      #�
 ADD_IN_CART_BTN_XPATH = "//android.widget.TextView[@text='加入购物车']"
 
 #购物车商品列表页面
+SHANGPING_LAYOUT_ID = "id=com.taobao.taobao:id/goods_all_layout"    #包含商品所有信息的RelativeLayout控件
 SHANGPING_TITLE_ID = "id=com.taobao.taobao:id/textview_goods_title" #商品标题控件的ID
 SHANGPING_TITLE_XPATH = "//android.widget.TextView[@resource-id='com.taobao.taobao:id/textview_goods_title']" #商品标题控件的XPATH
-SHANGPING_LAYOUT_ID = "id=com.taobao.taobao:id/goods_all_layout"    #包含商品所有信息的RelativeLayout控件
 SHANGPING_AMOUNT_XPATH = "//android.widget.TextView[@resource-id='com.taobao.taobao:id/textview_count']"  #商品数量
 SHANGPING_CHK_BOX_XPATH = "//android.widget.CheckBox[@resource-id='com.taobao.taobao:id/checkbox_goods']"   #商品复选框
 SHANGPING_PIC_XPATH = "//android.widget.ImageView[@resource-id='com.taobao.taobao:id/imageview_goods_icon']"    #商品图片
 SHANGPING_PRICE_XPATH = "//android.widget.TextView[@resource-id='com.taobao.taobao:id/textview_real_price']"    #商品价格
-BOTTOM_OF_CART_XPATH = "//android.widget.ImageView[@source-id='com.taobao.taobao:id/iv_main_pic_head']"   #购物车列表的底部：“你可能还喜欢”图片
+BOTTOM_OF_CART_XPATH = "//android.widget.ImageView[@resource-id='com.taobao.taobao:id/iv_main_pic_head']"   #购物车列表的底部：“你可能还喜欢”图片
 
 #购物车商品编辑页面
 CHECKBOX_ID = "id=com.taobao.taobao:id/checkbox_goods"  #复选框
