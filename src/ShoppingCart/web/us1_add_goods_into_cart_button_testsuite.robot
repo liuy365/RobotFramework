@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     使用场景1：“加入购物车”按钮能出现在所有商品的页面上。
+Documentation     US1：作为顾客，当我看中某样东西时能方便的点击“加入购物车”按钮，以便将商品加入购物车。
 Resource          web_resource.robot
 
 *** Test Cases ***
@@ -10,8 +10,8 @@ Add_cart Button Show On Goods Page
     ...    期望结果:
     ...    页面上有“加入购物车”按钮。
     Open Goods Page
-    Wait Until Page Contains Element    ${add_in_cart_btn_xpath}    ${time_out}    找不到"加入购物车"按钮
+    Wait Until Page Contains Element    ${ADD_IN_CART_BTN_XPATH}    ${time_out}    找不到"加入购物车"按钮
 
 *** Keywords ***
 Open Goods Page
-    Open Page    ${a_goods_url}
+    Open Page    ${A_GOODS_URL}

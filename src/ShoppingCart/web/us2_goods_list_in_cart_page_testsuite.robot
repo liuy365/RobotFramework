@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     使用场景2：进入购物车主页，能看见所有挑选的商品列表。
+Documentation     US2：作为顾客，当我打开购物车主页时能看见所有挑选的商品列表及其信息，以便我检查是否是我选择的东西。
 Suite Setup       Open Cart Page
 Resource          web_resource.robot
 Library           ${CURDIR}/lib/GetGoodsItemsLib
@@ -10,10 +10,7 @@ Check Goods Items Showed On Page
     ...    打开购物车页面
     ...    期望结果:
     ...    -商品的信息包括所属店铺、图片、名称、单价、数量、金额和可用的操作等信息；
-    ...    -如果商品有特殊服务，比如支持信用卡、7天无理由退换等， 显示在商品旁；
-    ...    -商品按店铺分割，同一店铺的商品放在一起；
-    ...    -有店铺的旺旺快捷入口；
-    @{elements}    Get WebElements    ${goods_list_xpath}
+    @{elements}    Get WebElements    ${GOODS_LIST_XPATH}
     : FOR    ${element}    IN    @{elements}
     \    ${content}    Get Element Attribute    ${element}    innerHTML
     \    Check Each Item In Goods    ${content}
@@ -49,6 +46,6 @@ Get Goods Number From DB
 
 Get Goods Number From Page
     [Documentation]    取得购物车网页上的商品数量。
-    @{elements}    Get WebElements    ${goods_list_xpath}
+    @{elements}    Get WebElements    ${GOODS_LIST_XPATH}
     ${len}    Get Length    ${elements}
     [Return]    ${len}

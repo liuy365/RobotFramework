@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     使用场景3：能修改购物车里已选商品。
+Documentation     US3：作为顾客，当浏览购物车页面时，我能随时修改商品数量或将它移出购物车，以便根据需要增加或减少所选择的商品。
 Suite Setup       Open Cart Page
 Resource          web_resource.robot
 Library           ${CURDIR}/lib/GetGoodsItemsLib
@@ -11,11 +11,11 @@ Click Plus Button
     ...
     ...    期望结果：
     ...    商品数量每点一次加一个，金额相应增加。
-    ${element}    Get WebElement    ${first_order_xpath}    #我们用xpath定位到第一个商品
+    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #我们用xpath定位到第一个商品
     ${amount1}    Check Amount and Sum    ${element}    #检查并计算商品金额=单价*数量
-    Click Element    ${first_order_plus_xpath}    #我们用xpath定位到第一个商品里的“+”号
+    Click Element    ${FIRST_ORDER_PLUS_XPATH}    #我们用xpath定位到第一个商品里的“+”号
     Sleep    5    #页面重新计算金额有点延迟
-    ${element}    Get WebElement    ${first_order_xpath}    #重新取得这个商品的信息
+    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #重新取得这个商品的信息
     ${amount2}    Check Amount and Sum    ${element}    #根据新的数量重新计算和检查商品金额
     ${value}    Evaluate    ${amount2}-${amount1}    #取得每点一次加后数量增加个数
     Should Be Equal As Integers    ${value}    1    #验证个数正确
@@ -26,11 +26,11 @@ Click Minus Botton
     ...
     ...    期望结果：
     ...    商品数量每点一次减一个，金额相应减少。
-    ${element}    Get WebElement    ${first_order_xpath}
+    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}
     ${amount1}    Check Amount and Sum    ${element}
-    Click Element    ${first_order_minus_xpath}
+    Click Element    ${FIRST_ORDER_MINUS_XPATH}
     Sleep    5
-    ${element}    Get WebElement    ${first_order_xpath}
+    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}
     ${amount2}    Check Amount and Sum    ${element}
     ${value}    Evaluate    ${amount1}-${amount2}
     Should Be Equal As Integers    ${value}    1
@@ -55,18 +55,16 @@ Check Amount and Sum
     ${content}    Get Element Attribute    ${element}    innerHTML
     &{items}    Get Goods Items    ${content}
     ${expected_sum}    evaluate    &{items}[price] * &{items}[amount]
-    ${sum}    Set Variable    &{items}[sum]
-    Should Be Equal As Numbers    ${expected_sum}    ${sum}    precision=2
+    Should Be Equal As Numbers    ${expected_sum}    &{items}[sum]    precision=2
     ${amount}    Set Variable    &{items}[amount]
     [Return]    ${amount}
 
 Check Invalid Amount Input
     [Arguments]    ${input_value}    ${expected_value}
-    ${input_box}    Set Variable    ${first_order_amount_input_xpath}
-    ${old_value}    Get Value    ${input_box}
-    ${max}    Get Element Attribute    ${input_box}    data-max
+    ${old_value}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}
+    ${max}    Get Element Attribute    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    data-max
     Run Keyword If    '${input_value}' == '2147483648'    Set Suite Variable    ${expected_value}    ${max}
-    Input Text    ${input_box}    ${input_value}
+    Input Text    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    ${input_value}
     Sleep    3
-    ${value_new}    Get Value    ${input_box}
+    ${value_new}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}
     Should Be Equal As Integers    ${value_new}    ${expected_value}
