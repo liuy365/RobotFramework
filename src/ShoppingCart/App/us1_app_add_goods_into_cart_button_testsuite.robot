@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     使用场景1：“加入购物车”按钮能出现在所有商品的页面上。
+Documentation     US1：作为顾客，当我看中某样东西时能方便的点击“加入购物车”按钮，以便将商品加入购物车。
 Resource          app_resource.robot
 
 *** Test Cases ***

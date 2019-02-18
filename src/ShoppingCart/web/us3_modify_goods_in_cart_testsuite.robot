@@ -14,11 +14,11 @@ Click Plus Button
     ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #我们用xpath定位到第一个商品
     ${amount1}    Check Amount and Sum    ${element}    #检查并计算商品金额=单价*数量
     Click Element    ${FIRST_ORDER_PLUS_XPATH}    #我们用xpath定位到第一个商品里的“+”号
-    Sleep    5    #页面重新计算金额有点延迟
+    Sleep    2    #页面重新计算金额有点延迟
     ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #重新取得这个商品的信息
     ${amount2}    Check Amount and Sum    ${element}    #根据新的数量重新计算和检查商品金额
     ${value}    Evaluate    ${amount2}-${amount1}    #取得每点一次加后数量增加个数
-    Should Be Equal As Integers    ${value}    1    #验证个数正确
+    Should Be Equal As Integers    ${value}    1    #验证个数是否正确
 
 Click Minus Botton
     [Documentation]    动作：

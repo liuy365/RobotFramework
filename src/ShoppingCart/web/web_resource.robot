@@ -12,7 +12,7 @@ ${Cart_Page_File}    ${CURDIR}/data/cart_page_content.html    # 购物车页面�
 Connect To Browser
     [Documentation]    前提：chrome启动在调试模式：
     ...    \path_to_chrome\chrome.exe --remote-debugging-port=8083 --user-data-dir=C:\selenium\AutomationProfile
-    connect_to_exist_browser    ${Chrome_ID}
+    Connect To Exist Browser    ${Chrome_ID}
     Set Selenium Speed    0
 
 Go To Cart Page On Line

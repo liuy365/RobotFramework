@@ -49,8 +49,8 @@ Get Goods Properties
     ...    input： ${index} 商品在本页中第几个。
     ...    output：&{dict_goods_items}包含商品所有属性的dictionary变量。
     &{dict_goods_items}    Create Dictionary    #创建一个空的dict变量
-    ${chk}    Get Element Attribute    xpath=(${SHANGPING_CHK_BOX_XPATH})[${index}]    checked
-    Set To Dictionary    ${dict_goods_items}    chk    ${chk}
+    ${chk}    Get Element Attribute    xpath=(${SHANGPING_CHK_BOX_XPATH})[${index}]    checked    #取商品的属性
+    Set To Dictionary    ${dict_goods_items}    chk    ${chk}    #放入dictionary变量中， 此处要用Scalar标量的书写方式。
     ${img}    Get Element Attribute    xpath=(${SHANGPING_PIC_XPATH})[${index}]    enabled
     Set To Dictionary    ${dict_goods_items}    img    ${img}
     ${title}    Get Text    xpath=(${SHANGPING_TITLE_XPATH})[${index}]

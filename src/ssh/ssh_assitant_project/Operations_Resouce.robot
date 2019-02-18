@@ -3,9 +3,9 @@ Documentation     这一个与远程自动助理机器人通信的的资源文�
 Library           SSHLibrary
 
 *** Variables ***
-${questions_file}    /home/tauser/assistant_robot/questions.txt
-${assistant_robot}    /home/tauser/assistant_robot/assistant_robot.py
-${answer_file}    /home/tauser/assistant_robot/answer.txt
+${questions_file}    /home/tauser/assistant_robot/questions.txt    # 远程服务器上用于存放问题的文件
+${assistant_robot}    /home/tauser/assistant_robot/assistant_robot.py    # 远程服务器的助理机器人
+${answer_file}    /home/tauser/assistant_robot/answer.txt    # 远程服务器上用于存放答案的文件
 
 *** Keywords ***
 Send_Message

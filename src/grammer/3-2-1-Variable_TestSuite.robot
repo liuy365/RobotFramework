@@ -2,6 +2,8 @@
 Force Tags        regression
 Default Tags      smoke
 Library           Collections
+Library           DateTime
+Library           Dialogs
 
 *** Variables ***
 @{list_suite}     1    2    3    4    5
@@ -33,25 +35,20 @@ List_Case_TestCase
     @{list_case2}    Set Variable    @{list_case}    6    7    #Set Variable里可以带list
     Log    list_case第一个值：@{list_case}[0]    #打印第一个元素
     Log    list_case2第六个值：@{list_case2}[5]    #打印第六个元素
-    Log Many    @{list_case2}    #打印所有元素
+    Log    ${list_case2}    #打印所有元素
     #用Create List 创建， Append To List添加
     @{list_t}    Create List    0    #用Create List关键字创建一个list变量，可以为空，也可以现在就赋值，这里设成包含一个0的list。
     Append To List    ${list_t}    @{list_case2}    8    9    #往list里加元素
     Log    ${list_t}    #以scalar方式打印
-    Log Many    @{list_t}    #以List方式方式打印
     #用Copy List方式
     @{list_1}    Create List    1    2    3
     @{list_2}    Copy List    ${list_1}
-    Log Many    @{list_2}
+    Log    ${list_2}
 
 Dict_Suite_TestCase
-    Log    &{dict}[name]
-    Log    ${dict.age}
-    Log    ${dict}
-    Set To Dictionary    ${dict}    chk    false
-    Log Many    ${dict}
-    Keep In Dictionary    ${dict}    no_exist
-    Log Many    ${dict}
+    Log    &{dict}[name]    #打印所有key为name的值
+    Log    ${dict.age}    #打印所有key为age的值
+    Log    ${dict}    #以scalar方式打印整个dict
 
 Dict_Case_TestCase
     &{new_dict}    Create Dictionary    &{dict}    gender=male
@@ -59,6 +56,10 @@ Dict_Case_TestCase
     Log    &{new_dict}[gender]
     Log    ${new_dict}
     Log Many    &{new_dict}
+    Set To Dictionary    ${dict}    chk    false    #往dict里添加key-value键值对
+    Log Many    &{dict}    #以dict方式打印
+    Keep In Dictionary    ${dict}    no_exist    #只保留key为“no_exist”的键值对，删除其它。相当于清空dict变量了
+    Log Many    &{dict}    #以dict方式打印
 
 Transfer_TestCase
     @{var}    Create List    1    2    3
@@ -109,6 +110,9 @@ evaluate
     Log Many    @{result}
     ${random_int}    Evaluate    random.randint(0, 10)    random
     Log    ${random_int}
+
+temp
+    Execute Manual Step    手工执行case：xxx
 
 *** Keywords ***
 myKeyword

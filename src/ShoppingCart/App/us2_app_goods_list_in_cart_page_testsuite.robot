@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     使用场景2：进入购物车主页，能看见所有挑选的商品列表。
+Documentation     US2：作为顾客，当我打开购物车主页时能看见所有挑选的商品列表及其信息，以便我检查是否是我选择的东西。
 Suite Setup       Open Cart Page
 Test Teardown     Swipe To Top
 Resource          app_resource.robot
@@ -75,5 +75,5 @@ Check Each Goods On Page
     \    Continue For Loop IF    '${status}' != 'PASS'    #取某个商品的最顶部一个元素，如果它没有出现在页面中表示商品没有显示完整，它已经在上一次处理过了，继续下一个。
     \    ${status}    ${value}    Run Keyword And Ignore Error    Element Should Be Visible    xpath=(${SHANGPING_AMOUNT_XPATH})[${i}]
     \    Continue For Loop IF    '${status}' != 'PASS'    #取某个商品的最下面一个元素，如果它没有出现在页面中表示商品没有显示完整，不处理这个商品，滚到下一屏幕时再处理。
-    \    ${dict_goods_items}    Get Goods Properties    ${i}
+    \    &{dict_goods_items}    Get Goods Properties    ${i}
     \    Check Each Item In Goods    &{dict_goods_items}

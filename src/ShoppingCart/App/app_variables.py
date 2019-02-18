@@ -6,7 +6,7 @@ SEARCH_BAR = "id=com.taobao.taobao:id/home_searchedit"  #主界面上的搜索�
 
 #搜索页面
 SEARCH_TEXT_BOX = "id=com.taobao.taobao:id/search_bar"  #输入文字的搜索框
-SEARCH_BTN = "id=com.taobao.taobao:id/search_button"    ##输入框右边的搜索按钮
+SEARCH_BTN = "id=com.taobao.taobao:id/search_button"    #输入框右边的搜索按钮
 SEARCH_RESULT_FIRST = "id=com.taobao.taobao:id/rfq_quote_array_item_img"      #搜索结果列表里的第一个商品图片
 
 #商品详情页
