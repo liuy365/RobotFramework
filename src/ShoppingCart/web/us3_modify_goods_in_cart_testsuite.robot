@@ -5,33 +5,27 @@ Resource          web_resource.robot
 Library           ${CURDIR}/lib/GetGoodsItemsLib
 
 *** Test Cases ***
-Click Plus Button
+Goods Number Can Be Increase
     [Documentation]    动作：
-    ...    点击数量旁点的+号
+    ...    点击数量旁边的+号
     ...
     ...    期望结果：
     ...    商品数量每点一次加一个，金额相应增加。
-    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #我们用xpath定位到第一个商品
-    ${amount1}    Check Amount and Sum    ${element}    #检查并计算商品金额=单价*数量
-    Click Element    ${FIRST_ORDER_PLUS_XPATH}    #我们用xpath定位到第一个商品里的“+”号
-    Sleep    2    #页面重新计算金额有点延迟
-    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #重新取得这个商品的信息
-    ${amount2}    Check Amount and Sum    ${element}    #根据新的数量重新计算和检查商品金额
+    ${amount1}    Check Amount and Sum    #检查并计算商品金额=单价*数量
+    Click Goods Modification Button    ${FIRST_ORDER_PLUS_XPATH}    #我们用xpath定位到第一个商品里的“+”号
+    ${amount2}    Check Amount and Sum    #根据新的数量重新计算和检查商品金额
     ${value}    Evaluate    ${amount2}-${amount1}    #取得每点一次加后数量增加个数
     Should Be Equal As Integers    ${value}    1    #验证个数是否正确
 
-Click Minus Botton
+Goods Number Can Be Decrease
     [Documentation]    动作：
     ...    点击数量旁点的-号
     ...
     ...    期望结果：
     ...    商品数量每点一次减一个，金额相应减少。
-    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}
-    ${amount1}    Check Amount and Sum    ${element}
-    Click Element    ${FIRST_ORDER_MINUS_XPATH}
-    Sleep    5
-    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}
-    ${amount2}    Check Amount and Sum    ${element}
+    ${amount1}    Check Amount and Sum
+    Click Goods Modification Button    ${FIRST_ORDER_MINUS_XPATH}
+    ${amount2}    Check Amount and Sum
     ${value}    Evaluate    ${amount1}-${amount2}
     Should Be Equal As Integers    ${value}    1
 
@@ -51,7 +45,7 @@ Invalid Amount Input
 
 *** Keywords ***
 Check Amount and Sum
-    [Arguments]    ${element}
+    ${element}    Get WebElement    ${FIRST_ORDER_XPATH}    #我们用xpath定位到第一个商品
     ${content}    Get Element Attribute    ${element}    innerHTML
     &{items}    Get Goods Items    ${content}
     ${expected_sum}    evaluate    &{items}[price] * &{items}[amount]
@@ -68,3 +62,8 @@ Check Invalid Amount Input
     Sleep    3
     ${value_new}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}
     Should Be Equal As Integers    ${value_new}    ${expected_value}
+
+Click Goods Modification Button
+    [Arguments]    ${buttion_id}
+    Click Element    ${buttion_id}
+    Sleep    2    #页面重新计算金额有点延迟

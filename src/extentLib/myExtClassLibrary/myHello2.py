@@ -15,10 +15,10 @@ class myExtClassLibrary(object):
 
     def getHelloMsgClass(self, input): 
         """
-        简单的helloworld示例，把getHelloMsg改为getHelloMsgClass 以示区别。\n
-        Return “你好<input>”\n
-        Example:\n
-        | ${ret} | Get Hello Msg Class | <input> |\n
+        简单的helloworld示例，把getHelloMsg改为getHelloMsgClass 以示区别。
+        Return “你好<input>”
+        Example:
+        | ${ret} | Get Hello Msg Class | <input> |
         """
         ret="NULL"
         if cmp(self.language.decode('utf-8'), '中文') == 0:

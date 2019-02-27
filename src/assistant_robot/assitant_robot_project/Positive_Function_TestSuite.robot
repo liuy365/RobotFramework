@@ -1,13 +1,9 @@
 *** Settings ***
 Documentation     助理机器人正向测试集合
-Suite Setup       Log    进入正向测试集合
-Suite Teardown    Log    退出正向测试集合
-Test Timeout      1 minute
 Resource          Operations_Resouce.robot
 
 *** Test Cases ***
 Hello_TestCase
-    [Documentation]    asdf
     Send_Message    你好！
     ${ret}    Get_Reply
     Check_Hello_Returns    ${ret}

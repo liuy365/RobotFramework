@@ -91,7 +91,7 @@ Start Calculator
     Wait For Active Window    计算器    度
     Comment    We want "Digit Grouping" off but there's no way to examine the check beside the menu item. So we need to try recognizing some displayed digits to see if its on or off and then change it if necessary.
     Send    12345
-    ${Result}    ${ErrMsg} =    Run Keyword And Ignore Error    Win Wait    计算器    12345    3
+    ${Result}    ${ErrMsg} =    Run Keyword And Ignore Error    Win Wait    计算器    12345
     Run Keyword If    "${Result}" == "FAIL"    Select Calculator Menu Item    View Digit grouping
     Win Wait    计算器    12345
     Click Button    Clear

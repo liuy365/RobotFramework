@@ -2,7 +2,7 @@
 Documentation     US4：作为顾客，当选中购物车中的商品时，在页面上能显示商品总价和进入收银台入口，以便根据商品总价决定选择哪些商品进入收银台。
 Suite Setup       Open Cart Page
 Test Teardown     Swipe To Top
-Resource          app_resource.robot
+Resource          app_resource.html
 
 *** Test Cases ***
 Check Sum For All Checked Goods

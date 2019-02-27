@@ -3,7 +3,7 @@ Documentation     US3：作为顾客，当浏览购物车页面时，我能随�
 Suite Setup       Open Cart Page
 Test Setup        Edit Number Setup
 Test Teardown     Edit Number Teardown
-Resource          app_resource.robot
+Resource          app_resource.html
 Library           String
 
 *** Variables ***

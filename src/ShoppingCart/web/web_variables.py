@@ -2,7 +2,7 @@
 #变量文件，用于存放WEB版淘宝的各种按钮ID或Xpath定位符。
 
 #chrome
-Chrome_ID = "localhost:8083"    # 已经用调试模式打开的本地Chrome
+Chrome_ID = "localhost:8080"    # 已经用调试模式打开的本地Chrome
 
 
 #淘宝首页

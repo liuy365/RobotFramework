@@ -6,3 +6,4 @@ case 1
     ${myChar}    Set Variable    Hello Robot Framework
     Log    ${myChar}
     Should Be Equal As Strings    ${myChar}    Hello Robot Framework
+

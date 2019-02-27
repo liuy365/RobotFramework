@@ -9,53 +9,53 @@ class GetGoodsItemsLib(object):
 	def __init__(self):
 		pass
 
-	def get_goods_Items(self, web_content):
+	def get_goods_items(self, web_content):
 		"""
             将购物车页面的商品属性全部放在一个dictionary里。
-            Input：页面上某一个商品的div标签源码
+            Input：页面上某一个商品的div标签HTML源码
             Return：包含该商品所有属性的的dict
 	        Example:\n
-	        | &{ret} | Get Goods Items | ${div_content} |\n
+	        | &{ret} | Get Goods Items | ${HTML_resource} |\n
 		"""
 		soup = BeautifulSoup(web_content,features="html.parser")
 		retDic = {}
 
-		chk=soup.find('div',class_='cart-checkbox')
+		chk=soup.find('div',class_='cart-checkbox')    # 选中或不选中复选框
 		if chk is not None:
 			retDic['chk'] = "not_checked"
-			chk = soup.find('div', class_='cart-checkbox-checked')
+			chk = soup.find('div', class_='cart-checkbox-checked')   #复选框处于选中状态
 			if chk is not None:
 			    retDic['chk']="checked"
 
-		img=soup.find('img',class_='J_ItemImg')
+		img=soup.find('img',class_='J_ItemImg')    #图片
 		if img is not None:
-			retDic['img'] = img["src"]
+			retDic['img'] = img["src"]     #图片的url
 
-		title = soup.find('a', class_='item-title')
+		title = soup.find('a', class_='item-title')    #商品标题
 		if title is not None:
 			retDic['title']=title.text
 
-		info = soup.find('li', class_='td-info')
+		info = soup.find('li', class_='td-info')    #商品信息
 		if info is not None:
 			retDic['info'] = info.text
 
-		price = soup.find('em', class_='price-now')
+		price = soup.find('em', class_='price-now')    #单价
 		if price is not None:
 			retDic['price'] = price.text.replace(u"￥", "").replace(",", "")
 
-		amount = soup.find('input', class_='J_ItemAmount')
+		amount = soup.find('input', class_='J_ItemAmount')    #购物车里商品的数量
 		if amount is not None:
 			retDic['amount'] = amount["value"]
 
-		sum = soup.find('em', class_='J_ItemSum')
+		sum = soup.find('em', class_='J_ItemSum')    #某一种商品的价格小记， 单价 * 数量
 		if sum is not None:
 			retDic['sum'] = sum.text.replace(u"￥", "").replace(",", "")
 
-		fav = soup.find('a', class_='J_Fav')
+		fav = soup.find('a', class_='J_Fav')    #收藏按钮
 		if fav is not None:
 			retDic['fav'] = fav.text
 
-		dele = soup.find('a', class_='J_Del')
+		dele = soup.find('a', class_='J_Del')    #删除按钮
 		if fav is not None:
 			retDic['del'] = dele.text
 

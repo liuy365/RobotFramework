@@ -6,9 +6,9 @@ if sys.getdefaultencoding() != 'utf-8':
 	
 def getHelloMsg( input ): 
     """
-        简单的helloworld示例\n
-        Return “你好<input>”\n
-        Example:\n
-        | ${ret} | Get Hello Msg | <input> |\n
+        简单的helloworld示例。
+        Return “你好<input>”。
+        Example:
+        | ${ret} | Get Hello Msg | <input> |
     """
     return "你好 " + input

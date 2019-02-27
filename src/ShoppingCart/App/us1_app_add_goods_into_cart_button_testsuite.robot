@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     US1：作为顾客，当我看中某样东西时能方便的点击“加入购物车”按钮，以便将商品加入购物车。
-Resource          app_resource.robot
+Resource          app_resource.html
 
 *** Test Cases ***
 Add_cart Button Show On Goods Page

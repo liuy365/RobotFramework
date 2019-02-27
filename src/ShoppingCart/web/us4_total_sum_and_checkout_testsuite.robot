@@ -21,10 +21,7 @@ Check Sum For All Checked Goods
     ...    期望结果:
     ...    1. 能显示所有已选商品的总价。金额要正确。
     ...    2. 在金额旁点击“结算” 按钮能进入收银台页面。
-    : FOR    ${i}    IN RANGE    1    4
-    \    ${element_id}    Replace String    ${FIRST_ORDER_CHECKBOX_XPATH}    [1]    [${i}]
-    \    Click Element    ${element_id}
-    \    Sleep    1
+    Make Some Goods Checked
     ${sum_calculate}    Get Sum For Goods
     ${sum_on_page}    Get Sum On Page
     Should Be Equal As Numbers    ${sum_calculate}    ${sum_on_page}    precision=2
@@ -43,9 +40,8 @@ Get Sum For Goods
     \    ${content}    Get Element Attribute    ${element}    innerHTML
     \    &{items}    Get Goods Items    ${content}
     \    ${check_box}    Set Variable    &{items}[chk]
-    \    Continue For Loop If    '${check_box}' == 'not_checked'
-    \    ${sum}    Set Variable    &{items}[sum]
-    \    ${sum_all}    Evaluate    ${sum_all}+ ${sum}
+    \    Continue For Loop If    '${check_box}' == 'not_checked'    #如果商品没有选中则不累加金额，继续循环取下一个。
+    \    ${sum_all}    Evaluate    ${sum_all}+ &{items}[sum]
     [Return]    ${sum_all}
 
 Get Sum On Page
@@ -55,6 +51,7 @@ Get Sum On Page
     [Return]    ${sum_on_page}
 
 Clear All Checkbox
+    Open Cart Page
     ${chk_class}    Get Element Attribute    ${CHECKBOX_TOTAL_XPATH}    class
     ${status}    ${value} =    Run Keyword And Ignore Error    Should Contain    ${chk_class}    cart-checkbox-checked
     Run Keyword If    '${status}' == 'PASS'    Click Element    ${CHECKBOX_TOTAL_XPATH}
@@ -62,3 +59,15 @@ Clear All Checkbox
     sleep    1
     Run Keyword Unless    '${status}' == 'PASS'    Click Element    ${CHECKBOX_TOTAL_XPATH}
     sleep    1
+
+Make Some Goods Checked
+    @{elements}    Get WebElements    ${GOODS_LIST_XPATH}
+    ${len}    Get Length    ${elements}    #取得当前页的商品数量总数
+    : FOR    ${i}    IN RANGE    ${len}
+    \    ${random_int}    Evaluate    random.randint(1, ${len})    random    #生成一个1到${len}之间的随机整数
+    \    ${element_id}    Replace String    ${FIRST_ORDER_CHECKBOX_XPATH}    [1]    [${random_int}]
+    \    Log    ${element_id}
+    \    ${chk_class}    Get Element Attribute    ${element_id}    class
+    \    ${status}    ${value} =    Run Keyword And Ignore Error    Should Contain    ${chk_class}    cart-checkbox-checked
+    \    Run Keyword Unless    '${status}' == 'PASS'    Click Element    ${element_id}    #如果没有选中就点击一下复选框
+    \    Sleep    1    #等待网页更新

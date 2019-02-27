@@ -2,7 +2,7 @@
 Documentation     US2：作为顾客，当我打开购物车主页时能看见所有挑选的商品列表及其信息，以便我检查是否是我选择的东西。
 Suite Setup       Open Cart Page
 Test Teardown     Swipe To Top
-Resource          app_resource.robot
+Resource          app_resource.html
 Library           String
 Library           Collections
 
@@ -33,17 +33,16 @@ Get Goods Number From DB
     [Return]    ${ret}
 
 Get Goods Number From Page
-    @{list_all_titles}    Create List
-    : FOR    ${i}    IN RANGE    10
+    @{list_all_titles}    Create List    #创建一个空list用于存放所有的商品标题
+    : FOR    ${i}    IN RANGE    10    #假设购物车有10页，真是土豪！放那么多东西在购物车里！
     \    @{list_t}    Get All Goods Title On Page    #取得当前页面的所有商品标题
     \    Log Many    @{list_t}
     \    Append To List    ${list_all_titles}    @{list_t}
-    \    ${count}    Get Matching Xpath Count    ${BOTTOM_OF_CART_XPATH}    #向下滑动到购物车列表的底部：“你可能还喜欢”图片出现
-    \    Exit For Loop If    ${count}>0
-    \    Swipe Up One Page
-    @{list_all_titles}    Remove Duplicates    ${list_all_titles}
-    ${number}    Get Length    ${list_all_titles}
-    Log Many    @{list_all_titles}
+    \    ${count}    Get Matching Xpath Count    ${BOTTOM_OF_CART_XPATH}    #查找是否出现“你可能还喜欢”图片
+    \    Exit For Loop If    ${count}>0    #如果找到就表明到达购物车底部，退出循环。
+    \    Swipe Up One Page    #向上滚动页面， 手指由屏幕底部往上滑动。
+    @{list_all_titles}    Remove Duplicates    ${list_all_titles}    #移除重复的商品。
+    ${number}    Get Length    ${list_all_titles}    #转换成scalar形式才能取得数组长度
     [Return]    ${number}
 
 Check Each Item In Goods
