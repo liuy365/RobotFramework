@@ -55,12 +55,12 @@ Check Amount and Sum
 
 Check Invalid Amount Input
     [Arguments]    ${input_value}    ${expected_value}
-    ${old_value}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}
-    ${max}    Get Element Attribute    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    data-max
-    Run Keyword If    '${input_value}' == '2147483648'    Set Suite Variable    ${expected_value}    ${max}
-    Input Text    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    ${input_value}
-    Sleep    3
-    ${value_new}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}
+    ${old_value}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    #取当前商品数量
+    ${max}    Get Element Attribute    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    data-max    #商品库存量
+    Run Keyword If    '${input_value}' >= '2147483648'    Set Suite Variable    ${expected_value}    ${max}    #如果输入的商品数量大于库存量
+    Input Text    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    ${input_value}    #输入商品数量
+    Sleep    3    #等待页面刷新
+    ${value_new}    Get Value    ${FIRST_ORDER_AMOUNT_INPUT_XPATH}    #取得修改后的商品数量
     Should Be Equal As Integers    ${value_new}    ${expected_value}
 
 Click Goods Modification Button

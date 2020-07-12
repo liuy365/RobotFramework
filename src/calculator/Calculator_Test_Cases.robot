@@ -5,7 +5,7 @@ Suite Teardown    Stop Calculator
 Test Setup        Clear Calculator
 Force Tags
 Default Tags      smoke
-Library           AutoItLibrary    ${OUTPUT DIR}    10    ${True}
+Library           AutoItLibrary
 Library           Collections
 Library           String
 Variables         CalculatorGUIMap.py
@@ -132,18 +132,18 @@ Get Calculator Version
     Send    ha
     Send    {ALTUP}
     Win Wait Active    关于“计算器”    版本
-    ${WinText} =    Control Get Text    关于“计算器”    版本    Static3
-    ${WinText2} =    Run Keyword If    "版本" not in "${WinText}"    Control Get Text    关于“计算器”    版本    Static4
-    ${WinText} =    Set Variable If    "版本" in "${WinText2}"    ${WinText2}    ${WinText}
+    ${WinText}    Control Get Text    关于“计算器”    版本    Static3
+    ${WinText2}    Run Keyword If    "版本" not in "${WinText}"    Control Get Text    关于“计算器”    版本    Static4
+    ${WinText}    Set Variable If    "版本" in "${WinText2}"    ${WinText2}    ${WinText}
     Run Keyword If    "版本" not in "${WinText}"    Fail    Cannot find Calculator version
-    ${GUIMAP} =    Set Variable If    "5.1" in "${WinText}"    ${GUIMAP_51}
-    ${GUIMAP} =    Set Variable If    "6.0" in "${WinText}"    ${GUIMAP_60}    ${GUIMAP}
-    ${GUIMAP} =    Set Variable If    "6.1" in "${WinText}"    ${GUIMAP_61}    ${GUIMAP}
+    ${GUIMAP}    Set Variable If    "5.1" in "${WinText}"    ${GUIMAP_51}
+    ${GUIMAP}    Set Variable If    "6.0" in "${WinText}"    ${GUIMAP_60}    ${GUIMAP}
+    ${GUIMAP}    Set Variable If    "6.1" in "${WinText}"    ${GUIMAP_61}    ${GUIMAP}
     Run Keyword If    ${GUIMAP} == None    Fail    Calculator version not supported: ${WinText}
     Set Suite Variable    ${GUIMAP}
-    ${MENUMAP} =    Set Variable If    "5.1" in "${WinText}"    ${MENUMAP_51}
-    ${MENUMAP} =    Set Variable If    "6.0" in "${WinText}"    ${MENUMAP_60}    ${MENUMAP}
-    ${MENUMAP} =    Set Variable If    "6.1" in "${WinText}"    ${MENUMAP_61}    ${MENUMAP}
+    ${MENUMAP}    Set Variable If    "5.1" in "${WinText}"    ${MENUMAP_51}
+    ${MENUMAP}    Set Variable If    "6.0" in "${WinText}"    ${MENUMAP_60}    ${MENUMAP}
+    ${MENUMAP}    Set Variable If    "6.1" in "${WinText}"    ${MENUMAP_61}    ${MENUMAP}
     Set Suite Variable    ${MENUMAP}
     Control Click    关于“计算器”    版本    Button1
 

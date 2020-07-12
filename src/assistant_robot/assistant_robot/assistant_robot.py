@@ -2,22 +2,20 @@
 # -*- coding: UTF-8 -*-
 import datetime
 import os
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import operator
 
 def Reply():
     curDir=os.path.dirname(__file__)
     src_f=os.path.join(curDir,'questions.txt')
     dst_f=os.path.join(curDir,'answer.txt')
-    fn_src=open(src_f,'r')
+    fn_src=open(src_f,'r',encoding='utf8')
     msg=fn_src.readline()
     fn_src.close()
     inputMsg=u'问：{}'.format(msg)
-    print inputMsg
-    fn_dst = open(dst_f, 'w')
+    print(inputMsg)
+    fn_dst = open(dst_f, 'w',encoding='utf8')
     retMsg=""
-    if cmp(msg.strip().decode('utf-8'), '你好！') == 0:
+    if operator.eq(msg.strip(), '你好！'):
         nowTime = int(datetime.datetime.now().strftime('%H'))
         retTime=""
         if nowTime >= 18:
@@ -28,16 +26,16 @@ def Reply():
             retTime=u"上午"
         retMsg=u"主人，{}好！".format(retTime)
 
-    elif cmp(msg.strip().decode('utf-8'), '现在几点了？') == 0:
+    elif operator.eq(msg.strip(), '现在几点了？'):
         nowTime = datetime.datetime.now().strftime('%H:%M')
         retMsg=u"现在时刻{}".format(nowTime)
-    elif cmp(msg.strip().decode('utf-8'), '今天天气怎么样？') == 0:
+    elif operator.eq(msg.strip(), '今天天气怎么样？'):
         retMsg=u"今天早上微风，温度23°，中午到下午晴朗，最高温度达32°，傍晚有小到大雨， 请主人出门注意防晒和准备雨具哦！"
 
     else:
         retMsg = u"对不起！我现在还不能理解您在说什么，请尝试其它问题吧。"
-    print "答：" + retMsg
-    fn_dst.write(retMsg.strip().decode('utf-8'))
+    print ("答：%s" % retMsg)
+    fn_dst.write(retMsg.strip())
     fn_dst.close()
 
 if __name__ == "__main__":

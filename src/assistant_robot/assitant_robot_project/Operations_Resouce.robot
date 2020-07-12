@@ -12,14 +12,12 @@ ${answer_file}    ${CURDIR}/../assistant_robot/answer.txt
 Send_Message
     [Arguments]    ${msg}
     [Documentation]    向助理机器人发送命令关键字
-    [Tags]    communicate
     Create File    ${questions_file}    ${msg}    UTF-8
     File Should Not Be Empty    ${questions_file}
     Log File    ${questions_file}
 
 Get_Reply
     [Documentation]    接收助理机器人返回消息关键字
-    [Tags]    communicate
     ${ret}    ${output}    Run And Return Rc And Output    python ${assistant_robot}
     Should Be Equal As Integers    ${ret}    0
     Log File    ${answer_file}

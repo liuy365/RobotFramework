@@ -152,6 +152,6 @@ if __name__=="__main__":
 </div>    
        """
 
-    data=obj.get_goods_Items(str)
-    for k, v in data.iteritems():
-	    print "%s=%s\n" % (k, v),
+    data=obj.get_goods_items(str)
+    for k, v in data.items():
+	    print("%s=%s\n" % (k, v))
